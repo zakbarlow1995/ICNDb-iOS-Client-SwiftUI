@@ -12,25 +12,30 @@ struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     
     var body: some View {
-        VStack {
-            Button("Random Joke") {
-                print("Random Joke")
-                viewModel.fetchJoke()
-            }.buttonStyle()
-            Button("Text Input") {
-                print("Text Input")
-            }.buttonStyle()
-            Button("Never-Ending Jokes") {
-                print("Never-Ending Jokese")
-            }.buttonStyle()
+        NavigationView {
+            VStack {
+                Button("Random Joke") {
+                    print("Random Joke")
+                    viewModel.fetchJoke()
+                }.buttonStyle()
+                Button("Text Input") {
+                    print("Text Input")
+                }.buttonStyle()
+                NavigationLink(destination: JokesListView()) {
+                    Text("Never-Ending Jokes")
+                        .buttonStyle()
+                }
+            }
+            .alert(item: $viewModel.alertItem) { alertItem -> Alert in
+                Alert(title: alertItem.title,
+                      message: alertItem.message,
+                      dismissButton: .default(alertItem.buttonTitle, action: {
+                        print("Joke Fetched")
+                      }))
+            }
+            .navigationBarTitle(Text("ICNDb"), displayMode: .large)
         }
-        .alert(item: $viewModel.alertItem) { alertItem -> Alert in
-            Alert(title: alertItem.title,
-                  message: alertItem.message,
-                  dismissButton: .default(alertItem.buttonTitle, action: {
-                    print("Joke Fetched")
-                  }))
-        }
+        .accentColor(Colors.appBlue)
     }
 }
 

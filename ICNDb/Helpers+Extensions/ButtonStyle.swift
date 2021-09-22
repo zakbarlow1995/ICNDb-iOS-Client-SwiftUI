@@ -13,7 +13,7 @@ struct ButtonStyle: ViewModifier {
             .font(.largeTitle)
             .foregroundColor(.white)
             .padding()
-            .background(Color("AppBlue"))
+            .background(Colors.appBlue)
             .cornerRadius(10)
     }
 }

@@ -9,16 +9,29 @@ import SwiftUI
 
 struct JokesListView: View {
     
-    @StateObject private var viewModel = HomeViewModel()
+    @StateObject private var viewModel = JokesListViewModel()
     
     var body: some View {
         List {
-            ForEach(1..<100) { item in
-                Text("\(item)")
+            ForEach(viewModel.jokes, id: \.id) { item in
+                Text("\(item.joke)")
             }
-            Rectangle()
-                .onAppear { print("Reached end of scroll view")  }
+//            ForEach(viewModel.$jokes) { item in
+//                Text("\(item)")
+//            }
+            if viewModel.isFetchingMore {
+                Text("Fetching more jokes...")
+                    .bold()
+                    .foregroundColor(Colors.appBlue)
+                    .multilineTextAlignment(.center)
+            }
+            Color.clear
+                .onAppear {
+                    print("Reached end of scroll view")
+                    viewModel.fetchMoreJokes()
+                }
         }
+        .navigationBarTitle(Text("Never-Ending Jokes"), displayMode: .large)
     }
 }
 
