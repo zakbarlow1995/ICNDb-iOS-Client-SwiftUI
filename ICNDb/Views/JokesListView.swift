@@ -15,15 +15,14 @@ struct JokesListView: View {
         List {
             ForEach(viewModel.jokes, id: \.id) { item in
                 Text("\(item.joke)")
+                    .padding()
             }
-//            ForEach(viewModel.$jokes) { item in
-//                Text("\(item)")
-//            }
             if viewModel.isFetchingMore {
                 Text("Fetching more jokes...")
                     .bold()
                     .foregroundColor(Colors.appBlue)
                     .multilineTextAlignment(.center)
+                    .padding()
             }
             Color.clear
                 .onAppear {
@@ -31,7 +30,7 @@ struct JokesListView: View {
                     viewModel.fetchMoreJokes()
                 }
         }
-        .navigationBarTitle(Text("Never-Ending Jokes"), displayMode: .large)
+        .navigationBarTitle(Text("Never-Ending Jokes"), displayMode: .inline)
     }
 }
 
