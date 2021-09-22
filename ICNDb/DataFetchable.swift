@@ -8,7 +8,7 @@
 import APIKit
 
 public protocol DataFetchable {
-    func fetchJoke(completion: @escaping (Joke?) -> Void)
+    func fetchJoke(customCharacter: (firstName: String, lastName: String)?, completion: @escaping (Joke?) -> Void)
     func fetchJokes(count: Int, completion: @escaping ([Joke]?) -> Void)
 }
 

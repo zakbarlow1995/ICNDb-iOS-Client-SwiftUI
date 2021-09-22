@@ -22,12 +22,16 @@ public class APIService {
     
     private let path = "https://api.icndb.com/jokes/random"
     
-    private func randomJokeUrl(exclude: [String] = ["explicit"]) -> URL? {
+    private func randomJokeUrl(names: (firstName: String, lastName: String)? = nil, exclude: [String] = ["explicit"]) -> URL? {
         guard !exclude.isEmpty else { return URL(string: path) }
         guard let url = URL(string: path) else { return nil}
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
         var queryItems = urlComponents?.queryItems ?? []
         queryItems.append(URLQueryItem(name: "exclude", value: "[\(exclude.joined(separator: ","))]"))
+        if let names = names {
+            queryItems.append(URLQueryItem(name: "firstName", value: names.firstName))
+            queryItems.append(URLQueryItem(name: "lastName", value: names.lastName))
+        }
         urlComponents?.queryItems = queryItems
         return urlComponents?.url
     }
@@ -37,8 +41,11 @@ public class APIService {
         return URL(string: path + "/\(count)")
     }
     
-    public func fetchJoke(completion: @escaping (Joke?) -> Void) {
-        guard let url = randomJokeUrl() else { return }
+    public func fetchJoke(
+        customCharacter: (firstName: String, lastName: String)? = nil,
+        completion: @escaping (Joke?) -> Void)
+    {
+        guard let url = randomJokeUrl(names: customCharacter) else { return }
         cancellable?.cancel()
         cancellable = URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }

@@ -5,8 +5,8 @@
 //  Created by Zak Barlow on 21/09/2021.
 //
 
-import SwiftUI
 import APIKit
+import SwiftUI
 
 final class HomeViewModel: ObservableObject {
     
@@ -19,7 +19,7 @@ final class HomeViewModel: ObservableObject {
     @Published var alertItem: AlertItem?
     
     func fetchJoke() {
-        dataFetchable.fetchJoke { [weak self] result in
+        dataFetchable.fetchJoke(customCharacter: nil) { [weak self] result in
             if let result = result {
                 self?.alertItem = AlertItem.forJoke(result.joke)
             }

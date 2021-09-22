@@ -28,6 +28,8 @@
 		378E088126FAA1E400E9F38E /* JokesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378E088026FAA1E400E9F38E /* JokesListView.swift */; };
 		378E088326FAA8D300E9F38E /* JokesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378E088226FAA8D300E9F38E /* JokesListViewModel.swift */; };
 		378E088626FAAC8700E9F38E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378E088526FAAC8700E9F38E /* Colors.swift */; };
+		378E088826FB86B700E9F38E /* CharacterInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378E088726FB86B700E9F38E /* CharacterInputView.swift */; };
+		378E088A26FB86C700E9F38E /* CharacterInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378E088926FB86C700E9F38E /* CharacterInputViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,8 @@
 		378E088026FAA1E400E9F38E /* JokesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesListView.swift; sourceTree = "<group>"; };
 		378E088226FAA8D300E9F38E /* JokesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesListViewModel.swift; sourceTree = "<group>"; };
 		378E088526FAAC8700E9F38E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		378E088726FB86B700E9F38E /* CharacterInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInputView.swift; sourceTree = "<group>"; };
+		378E088926FB86C700E9F38E /* CharacterInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInputViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				3782078726FA4499007EFC84 /* HomeView.swift */,
+				378E088726FB86B700E9F38E /* CharacterInputView.swift */,
 				378E088026FAA1E400E9F38E /* JokesListView.swift */,
 			);
 			path = Views;
@@ -254,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				378E087826FA917500E9F38E /* HomeViewModel.swift */,
+				378E088926FB86C700E9F38E /* CharacterInputViewModel.swift */,
 				378E088226FAA8D300E9F38E /* JokesListViewModel.swift */,
 			);
 			path = ViewModels;
@@ -472,11 +478,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				378E087D26FA928700E9F38E /* AlertItem.swift in Sources */,
+				378E088A26FB86C700E9F38E /* CharacterInputViewModel.swift in Sources */,
 				378E088626FAAC8700E9F38E /* Colors.swift in Sources */,
 				378E088126FAA1E400E9F38E /* JokesListView.swift in Sources */,
 				378E088326FAA8D300E9F38E /* JokesListViewModel.swift in Sources */,
 				378207D626FA5478007EFC84 /* DataFetchable.swift in Sources */,
 				378E087926FA917500E9F38E /* HomeViewModel.swift in Sources */,
+				378E088826FB86B700E9F38E /* CharacterInputView.swift in Sources */,
 				3782078826FA4499007EFC84 /* HomeView.swift in Sources */,
 				378207DA26FA896D007EFC84 /* AppDelegate.swift in Sources */,
 				378E087726FA8E0D00E9F38E /* ButtonStyle.swift in Sources */,

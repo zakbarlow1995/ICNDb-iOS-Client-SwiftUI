@@ -15,12 +15,12 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 Button("Random Joke") {
-                    print("Random Joke")
                     viewModel.fetchJoke()
                 }.buttonStyle()
-                Button("Text Input") {
-                    print("Text Input")
-                }.buttonStyle()
+                NavigationLink(destination: CharacterInputView()) {
+                    Text("Text Input")
+                        .buttonStyle()
+                }
                 NavigationLink(destination: JokesListView()) {
                     Text("Never-Ending Jokes")
                         .buttonStyle()
