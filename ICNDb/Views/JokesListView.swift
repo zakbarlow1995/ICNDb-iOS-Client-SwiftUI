@@ -13,8 +13,8 @@ struct JokesListView: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.jokes, id: \.id) { item in
-                Text("\(item.joke)")
+            ForEach(viewModel.jokes, id: \.self) { joke in
+                Text("\(joke)")
                     .padding()
             }
             if viewModel.isFetchingMore {
@@ -29,6 +29,13 @@ struct JokesListView: View {
                     print("Reached end of scroll view")
                     viewModel.fetchMoreJokes()
                 }
+        }
+        .alert(item: $viewModel.alertItem) { alertItem -> Alert in
+            Alert(title: alertItem.title,
+                  message: alertItem.message,
+                  dismissButton: .default(alertItem.buttonTitle, action: {
+                    print("Joke Fetched")
+                  }))
         }
         .navigationBarTitle(Text("Never-Ending Jokes"), displayMode: .inline)
     }

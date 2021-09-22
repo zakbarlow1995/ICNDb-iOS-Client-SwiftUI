@@ -23,9 +23,11 @@ final class CharacterInputViewModel: ObservableObject {
     func fetchJoke() {
         if let sanitisedFirstName = sanitisedInput(firstName),
            let sanitisedLastName = sanitisedInput(lastName) {
-            dataFetchable.fetchJoke(customCharacter: (sanitisedFirstName, sanitisedLastName)) { [weak self] result in
-                if let result = result {
-                    self?.alertItem = AlertItem.forJoke(result.joke)
+            dataFetchable.fetchJoke(customCharacter: (sanitisedFirstName, sanitisedLastName)) { [weak self] joke, error in
+                if let joke = joke {
+                    self?.alertItem = AlertItem.forJoke(joke)
+                } else {
+                    self?.alertItem = AlertItem.forError(error)
                 }
             }
         } else {

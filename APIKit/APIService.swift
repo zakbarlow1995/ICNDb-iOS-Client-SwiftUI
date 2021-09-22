@@ -13,12 +13,17 @@ public class APIService {
     
     private init() {}
     
-    private var cancellable: AnyCancellable?
+    enum APIServiceError: Error, LocalizedError {
+        case invalidURL
+        
+        var errorDescription: String? {
+            switch self {
+            case .invalidURL: return "Invalid URL."
+            }
+        }
+    }
     
-//    public enum Endpoint: String {
-//        case joke
-//        case jokes
-//    }
+    private var cancellable: AnyCancellable?
     
     private let path = "https://api.icndb.com/jokes/random"
     
@@ -43,40 +48,47 @@ public class APIService {
     
     public func fetchJoke(
         customCharacter: (firstName: String, lastName: String)? = nil,
-        completion: @escaping (Joke?) -> Void)
+        completion: @escaping (String?, Error?) -> Void)
     {
-        guard let url = randomJokeUrl(names: customCharacter) else { return }
+        guard let url = randomJokeUrl(names: customCharacter) else { completion(nil, APIServiceError.invalidURL); return }
         cancellable?.cancel()
         cancellable = URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
             .decode(type: JokeResponse.self, decoder: JSONDecoder())
-//            .replaceError(with: [])
             .eraseToAnyPublisher()
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { error in
-                print(error)
-                completion(nil)
+            .sink(receiveCompletion: { ended in
+                switch ended {
+                case .finished:
+                    break
+                case let .failure(error):
+                    completion(nil, error)
+                }
             }, receiveValue: { result in
-                print(result.value)
-                completion(result.value)
+                completion(result.value.formattedJoke(), nil)
             })
     }
-      
-    public func fetchJokes(count: Int = 20, completion: @escaping ([Joke]?) -> Void) {
-        guard let url = randomJokesUrl(count: count) else { return }
+    
+    public func fetchJokes(
+        count: Int = 20,
+        completion: @escaping ([String]?, Error?) -> Void)
+    {
+        guard let url = randomJokesUrl(count: count) else { completion(nil, APIServiceError.invalidURL); return }
         cancellable?.cancel()
         cancellable = URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
             .decode(type: JokesResponse.self, decoder: JSONDecoder())
-//            .replaceError(with: [])
             .eraseToAnyPublisher()
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { error in
-                print(error)
-                completion(nil)
+            .sink(receiveCompletion: { ended in
+                switch ended {
+                case .finished:
+                    break
+                case let .failure(error):
+                    completion(nil, error)
+                }
             }, receiveValue: { result in
-                print(result.value)
-                completion(result.value)
+                completion(result.value.map { $0.formattedJoke() }, nil)
             })
     }
 }

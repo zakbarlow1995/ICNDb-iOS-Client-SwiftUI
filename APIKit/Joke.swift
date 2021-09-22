@@ -17,14 +17,18 @@ struct JokesResponse: Codable {
     let value: [Joke]
 }
 
-public struct Joke: Codable {
-    public let id: Int
-    public let joke: String
-    public let categories: [String]
+struct Joke: Codable {
+    let id: Int
+    let joke: String
+    let categories: [String]
     
-    public init(id: Int, joke: String, categories: [String]) {
+    init(id: Int, joke: String, categories: [String]) {
         self.id = id
         self.joke = joke
         self.categories = categories
+    }
+    
+    func formattedJoke() -> String {
+        joke.replacingOccurrences(of: "&quot;", with: "\"")
     }
 }

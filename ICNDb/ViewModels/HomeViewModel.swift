@@ -19,9 +19,11 @@ final class HomeViewModel: ObservableObject {
     @Published var alertItem: AlertItem?
     
     func fetchJoke() {
-        dataFetchable.fetchJoke(customCharacter: nil) { [weak self] result in
-            if let result = result {
-                self?.alertItem = AlertItem.forJoke(result.joke)
+        dataFetchable.fetchJoke(customCharacter: nil) { [weak self] joke, error in
+            if let joke = joke {
+                self?.alertItem = AlertItem.forJoke(joke)
+            } else {
+                self?.alertItem = AlertItem.forError(error)
             }
         }
     }

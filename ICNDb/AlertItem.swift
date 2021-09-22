@@ -18,4 +18,10 @@ struct AlertItem: Identifiable {
                   message: Text(joke),
                   buttonTitle: Text("OK"))
     }
+    
+    static func forError(_ error: Error?) -> AlertItem {
+        AlertItem(title: Text("Whoops, Something Went Wrong!"),
+                  message: Text("An error occured: \(error?.localizedDescription ?? "[Unknown Description].") Please try again"),
+                                 buttonTitle: Text("OK"))
+    }
 }
