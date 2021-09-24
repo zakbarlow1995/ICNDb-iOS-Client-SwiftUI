@@ -27,8 +27,4 @@ struct Joke: Codable {
         self.joke = joke
         self.categories = categories
     }
-    
-    func formattedJoke() -> String {
-        joke.replacingOccurrences(of: "&quot;", with: "\"")
-    }
 }

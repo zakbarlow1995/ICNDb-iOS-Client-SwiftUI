@@ -25,17 +25,15 @@ struct JokesListView: View {
                     .padding()
             }
             Color.clear
+                //.frame(maxHeight: .leastNormalMagnitude)
                 .onAppear {
-                    print("Reached end of scroll view")
                     viewModel.fetchMoreJokes()
                 }
         }
         .alert(item: $viewModel.alertItem) { alertItem -> Alert in
             Alert(title: alertItem.title,
                   message: alertItem.message,
-                  dismissButton: .default(alertItem.buttonTitle, action: {
-                    print("Joke Fetched")
-                  }))
+                  dismissButton: .default(alertItem.buttonTitle))
         }
         .navigationBarTitle(Text("Never-Ending Jokes"), displayMode: .inline)
     }
@@ -46,4 +44,3 @@ struct JokesListView_Previews: PreviewProvider {
         JokesListView()
     }
 }
-

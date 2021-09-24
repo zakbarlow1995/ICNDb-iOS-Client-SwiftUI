@@ -19,7 +19,7 @@ final class HomeViewModel: ObservableObject {
     @Published var alertItem: AlertItem?
     
     func fetchJoke() {
-        dataFetchable.fetchJoke(customCharacter: nil) { [weak self] joke, error in
+        dataFetchable.fetchJoke(explicitEnabled: StorageService.shared.isExplicitEnabled, customCharacter: nil) { [weak self] joke, error in
             if let joke = joke {
                 self?.alertItem = AlertItem.forJoke(joke)
             } else {

@@ -10,9 +10,11 @@ import SwiftUI
 struct ButtonStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(.largeTitle)
+            .font(.title)
             .foregroundColor(.white)
-            .padding()
+            .padding([.leading, .trailing], 10)
+            .padding([.top, .bottom], 5)
+            .frame(maxWidth: .infinity)
             .background(Colors.appBlue)
             .cornerRadius(10)
     }

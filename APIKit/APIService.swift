@@ -6,12 +6,14 @@
 //
 
 import Combine
-//import Foundation
 
 public class APIService {
-    public static let shared = APIService()
     
     private init() {}
+    
+    private var cancellable: AnyCancellable?
+    
+    public static let shared = APIService()
     
     enum APIServiceError: Error, LocalizedError {
         case invalidURL
@@ -23,34 +25,41 @@ public class APIService {
         }
     }
     
-    private var cancellable: AnyCancellable?
+    struct APIComponents {
+        static let scheme = "https"
+        static let host = "api.icndb.com"
+        static let path = "/jokes/random"
+    }
     
-    private let path = "https://api.icndb.com/jokes/random"
-    
-    private func randomJokeUrl(names: (firstName: String, lastName: String)? = nil, exclude: [String] = ["explicit"]) -> URL? {
-        guard !exclude.isEmpty else { return URL(string: path) }
-        guard let url = URL(string: path) else { return nil}
-        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        var queryItems = urlComponents?.queryItems ?? []
-        queryItems.append(URLQueryItem(name: "exclude", value: "[\(exclude.joined(separator: ","))]"))
+    func makeRequestUrl(
+        jokeCount: Int = 1,
+        excludeCategories: [String] = ["explicit"],
+        names: (firstName: String, lastName: String)? = nil
+    ) -> URL? {
+        var components = URLComponents()
+        components.scheme = APIComponents.scheme
+        components.host = APIComponents.host
+        components.path = jokeCount > 1 ? APIComponents.path + "/\(jokeCount)" : APIComponents.path
+        
+        var queryItems = [URLQueryItem(name: "escape", value: "javascript")]
+        if !excludeCategories.isEmpty {
+            queryItems.append(URLQueryItem(name: "exclude", value: "[\(excludeCategories.joined(separator: ","))]"))
+        }
         if let names = names {
             queryItems.append(URLQueryItem(name: "firstName", value: names.firstName))
             queryItems.append(URLQueryItem(name: "lastName", value: names.lastName))
         }
-        urlComponents?.queryItems = queryItems
-        return urlComponents?.url
-    }
-    
-    private func randomJokesUrl(count: Int = 20) -> URL? {
-        guard count > 1 else { return URL(string: path) }
-        return URL(string: path + "/\(count)")
+        components.queryItems = queryItems
+        
+        return components.url
     }
     
     public func fetchJoke(
+        explicitEnabled: Bool = false,
         customCharacter: (firstName: String, lastName: String)? = nil,
         completion: @escaping (String?, Error?) -> Void)
     {
-        guard let url = randomJokeUrl(names: customCharacter) else { completion(nil, APIServiceError.invalidURL); return }
+        guard let url = makeRequestUrl(excludeCategories: explicitEnabled ? [] : ["explicit"], names: customCharacter) else { completion(nil, APIServiceError.invalidURL); return }
         cancellable?.cancel()
         cancellable = URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
@@ -65,15 +74,17 @@ public class APIService {
                     completion(nil, error)
                 }
             }, receiveValue: { result in
-                completion(result.value.formattedJoke(), nil)
+                completion(result.value.joke, nil)
             })
     }
     
     public func fetchJokes(
         count: Int = 20,
+        explicitEnabled: Bool = false,
+        customCharacter: (firstName: String, lastName: String)? = nil,
         completion: @escaping ([String]?, Error?) -> Void)
     {
-        guard let url = randomJokesUrl(count: count) else { completion(nil, APIServiceError.invalidURL); return }
+        guard let url = makeRequestUrl(jokeCount: count, excludeCategories: explicitEnabled ? [] : ["explicit"], names: customCharacter) else { completion(nil, APIServiceError.invalidURL); return }
         cancellable?.cancel()
         cancellable = URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
@@ -88,7 +99,7 @@ public class APIService {
                     completion(nil, error)
                 }
             }, receiveValue: { result in
-                completion(result.value.map { $0.formattedJoke() }, nil)
+                completion(result.value.map { $0.joke }, nil)
             })
     }
 }

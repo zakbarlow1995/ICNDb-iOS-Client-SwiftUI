@@ -22,19 +22,13 @@ struct CharacterInputView: View {
                     viewModel.fetchJoke()
                     hideKeyboard()
                 }
-                .font(.largeTitle)
-                .frame(maxWidth: .infinity)
-                .background(Colors.appBlue)
-                .foregroundColor(.white)
-                .cornerRadius(6.0)
+                .buttonStyle()
             }
         }
         .alert(item: $viewModel.alertItem) { alertItem -> Alert in
             Alert(title: alertItem.title,
                   message: alertItem.message,
-                  dismissButton: .default(alertItem.buttonTitle, action: {
-                    print("Joke Fetched")
-                  }))
+                  dismissButton: .default(alertItem.buttonTitle))
         }
         .navigationBarTitle(Text("Text Input"), displayMode: .inline)
         .navigationBarItems(trailing: Button {
