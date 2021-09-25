@@ -197,16 +197,14 @@
 		3782078426FA4499007EFC84 /* ICNDb */ = {
 			isa = PBXGroup;
 			children = (
-				378E088426FAAC4200E9F38E /* Helpers+Extensions */,
 				378207D926FA896D007EFC84 /* AppDelegate.swift */,
 				378207D726FA8905007EFC84 /* SceneDelegate.swift */,
+				378E088426FAAC4200E9F38E /* Helpers+Extensions */,
 				378E087526FA8DE100E9F38E /* Views */,
 				378E087B26FA91C200E9F38E /* ViewModels */,
 				3782078926FA449A007EFC84 /* Assets.xcassets */,
 				3782078E26FA449A007EFC84 /* Info.plist */,
 				3782078B26FA449A007EFC84 /* Preview Content */,
-				378207D526FA5478007EFC84 /* DataFetchable.swift */,
-				378E087C26FA928700E9F38E /* AlertItem.swift */,
 			);
 			path = ICNDb;
 			sourceTree = "<group>";
@@ -284,8 +282,10 @@
 		378E088426FAAC4200E9F38E /* Helpers+Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				378E088526FAAC8700E9F38E /* Colors.swift */,
+				378E087C26FA928700E9F38E /* AlertItem.swift */,
 				378E087626FA8E0D00E9F38E /* ButtonStyle.swift */,
+				378E088526FAAC8700E9F38E /* Colors.swift */,
+				378207D526FA5478007EFC84 /* DataFetchable.swift */,
 				37D207B626FE0F3F00070DB2 /* StorageService.swift */,
 				37D207B826FE12B900070DB2 /* UserDefault.swift */,
 			);
