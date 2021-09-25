@@ -1,5 +1,5 @@
 //
-//  ButtonStyle.swift
+//  AppButtonStyle.swift
 //  ICNDb
 //
 //  Created by Zak Barlow on 21/09/2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ButtonStyle: ViewModifier {
+struct AppButtonStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.title)
@@ -15,13 +15,13 @@ struct ButtonStyle: ViewModifier {
             .padding([.leading, .trailing], 10)
             .padding([.top, .bottom], 5)
             .frame(maxWidth: .infinity)
-            .background(LinearGradient(colors: [Colors.appBlue, Colors.appLightBlue], startPoint: .leading, endPoint: .trailing))//(Colors.appBlue)
+            .background(LinearGradient(colors: [Colors.appBlue, Colors.appLightBlue], startPoint: .leading, endPoint: .trailing))
             .cornerRadius(10)
     }
 }
 
 extension View {
-    func buttonStyle() -> some View {
-        modifier(ButtonStyle())
+    func appButtonStyle() -> some View {
+        modifier(AppButtonStyle())
     }
 }

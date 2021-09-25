@@ -17,13 +17,16 @@ struct CharacterInputView: View {
                 TextField("First Name", text: $viewModel.firstName)
                 TextField("Last Name", text: $viewModel.lastName)
             }
-            Section(header: Text("Actions")) {
-                Button("Search") {
-                    viewModel.fetchJoke()
-                    hideKeyboard()
+            Button {
+                viewModel.fetchJoke()
+                hideKeyboard()
+            } label: {
+                HStack {
+                    Text("Search")
+                    Image(systemName: "magnifyingglass")
                 }
-                .buttonStyle()
             }
+            .appButtonStyle()
         }
         .alert(item: $viewModel.alertItem) { alertItem -> Alert in
             Alert(title: alertItem.title,
@@ -36,7 +39,7 @@ struct CharacterInputView: View {
         } label: {
             Image(systemName: "keyboard.chevron.compact.down")
         })
-//        .onTapGesture { // <--- this method can block fields, so have to use the canImport(UIKit method)
+//        .onTapGesture { // <--- this method can block fields, so have to use the canImport(UIKit method), similarly adding custom swipe-to-dismiss keyboard gesture combinations does not play nice with TextFields inside Forms.
 //            hideKeyboard()
 //        }
     }

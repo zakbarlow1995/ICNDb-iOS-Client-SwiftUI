@@ -20,23 +20,42 @@ struct HomeView: View {
                     Text("Enable Explicit Jokes")
                 }
                 .padding()
+                
                 Spacer()
-                Button("Random Joke") {
+                
+                Button {
                     viewModel.fetchJoke()
+                } label: {
+                    HStack {
+                        Text("Random Joke")
+                        Image(systemName: "dice")
+                    }
                 }
-                .buttonStyle()
+                .appButtonStyle()
                 .padding()
+
+                
                 NavigationLink(destination: CharacterInputView()) {
-                    Text("Text Input")
-                        .buttonStyle()
-                        .padding()
+                    HStack{
+                        Text("Text Input")
+                        Image(systemName: "keyboard")
+                    }
+                    .appButtonStyle()
+                    .padding()
                 }
+                .buttonStyle(PlainButtonStyle())
+                
                 NavigationLink(destination: JokesListView()) {
-                    Text("Never-Ending Jokes")
-                        .buttonStyle()
-                        .padding()
+                    HStack{
+                        Text("Never-Ending Jokes")
+                        Image(systemName: "list.bullet")
+                    }
+                    .appButtonStyle()
+                    .padding()
                 }
-                Spacer()
+                .buttonStyle(PlainButtonStyle())
+                
+                Spacer()                
             }
             .alert(item: $viewModel.alertItem) { alertItem -> Alert in
                 Alert(title: alertItem.title,

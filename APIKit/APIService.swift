@@ -15,7 +15,7 @@ public class APIService {
     
     public static let shared = APIService()
     
-    enum APIServiceError: Error, LocalizedError {
+    private enum APIServiceError: Error, LocalizedError {
         case invalidURL
         
         var errorDescription: String? {
@@ -25,13 +25,13 @@ public class APIService {
         }
     }
     
-    struct APIComponents {
+    private struct APIComponents {
         static let scheme = "https"
         static let host = "api.icndb.com"
         static let path = "/jokes/random"
     }
     
-    func makeRequestUrl(
+    private func makeRequestUrl(
         jokeCount: Int = 1,
         excludeCategories: [String] = ["explicit"],
         names: (firstName: String, lastName: String)? = nil
