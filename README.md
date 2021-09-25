@@ -4,7 +4,7 @@ This repository contains the source code for the ICNDb App, which intereacts wit
 
 ### Installation
 
-1. Download the project files and unzip.
+1. Either clone this repo (`git clone git@github.com:zakbarlow1995/ICNDb-iOS-Client-SwiftUI.git`) or manually download the project files and unzip.
 2. Open the `.xcodeproj` with Xcode.
 3. Go to `Targets > ICNDb > Signing & Capabilities`, select your team & add a new unique bundle identifier (e.g. `com.[your-team].ICNDb`). For personal use it is recommended to leave the "Automatically manage signing" box checked - to let Xcode manage Provisioning Profiles, App IDs & Certificates for you.
 4. Build and run the app, installing it on your device/simulator.
