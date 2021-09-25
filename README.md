@@ -1,6 +1,6 @@
 # Internet Chuck Norris Database iOS App
 
-This repository contains the source code for the ICNDb App, which intereacts with the [Internet Chuck Norris Database API](http://www.icndb.com/api/). This SwiftUI application is written in `Swift 5` and able to run on any iPhone on iOS 13.0 or greater. As such, this project requires at least `Xcode11`. This project demonstrates MVVM, Dependency Injection, Networking (using Combine), and Unit Testing in Swift. 
+This repository contains the source code for the ICNDb App, which interacts with the [Internet Chuck Norris Database API](http://www.icndb.com/api/). This SwiftUI application is written in `Swift 5` and able to run on any iPhone on iOS 13.0 or greater. As such, this project requires at least `Xcode11`. This project demonstrates MVVM, Dependency Injection, Networking (using Combine), and Unit Testing in Swift. 
 
 ### Installation
 
