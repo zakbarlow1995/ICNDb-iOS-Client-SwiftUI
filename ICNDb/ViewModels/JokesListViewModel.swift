@@ -8,12 +8,17 @@
 import APIKit
 import SwiftUI
 
+struct JokeEntry: Identifiable {
+    let id = UUID()
+    let joke: String
+}
+
 final class JokesListViewModel: ObservableObject {
     
     private let dataFetchable: DataFetchable
     private var _error: Error?
     
-    @Published var jokes: [String] = []
+    @Published var jokes: [JokeEntry] = []
     @Published var isFetchingMore: Bool = false
     @Published var alertItem: AlertItem?
     
@@ -28,7 +33,7 @@ final class JokesListViewModel: ObservableObject {
 //        DispatchQueue.main.asyncAfter(deadline: .now().advanced(by: .milliseconds(500))) { [weak self] in
         dataFetchable.fetchJokes(count: 20, explicitEnabled: StorageService.shared.isExplicitEnabled, customCharacter: nil) { [weak self] result, error in
                 if let result = result {
-                    self?.jokes.append(contentsOf: result)
+                    self?.jokes.append(contentsOf: result.map { JokeEntry(joke: $0) })
                 } else {
                     self?._error = error
                     self?.alertItem = AlertItem.forError(error)

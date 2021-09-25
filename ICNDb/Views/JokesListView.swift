@@ -13,8 +13,8 @@ struct JokesListView: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.jokes, id: \.self) { joke in
-                Text("\(joke)")
+            ForEach(viewModel.jokes, id: \.id) { entry in
+                Text("\(entry.joke)")
                     .padding()
             }
             if viewModel.isFetchingMore {

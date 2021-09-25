@@ -9,15 +9,15 @@ import Foundation
 
 struct JokeResponse: Codable {
     let type: String
-    let value: Joke
+    let value: JokeDto
 }
 
 struct JokesResponse: Codable {
     let type: String
-    let value: [Joke]
+    let value: [JokeDto]
 }
 
-struct Joke: Codable {
+struct JokeDto: Codable {
     let id: Int
     let joke: String
     let categories: [String]

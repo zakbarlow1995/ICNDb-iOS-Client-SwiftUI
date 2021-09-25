@@ -25,7 +25,7 @@ class JokesListViewModelSpec: XCTestCase {
         
         XCTAssertTrue(!viewModel.jokes.isEmpty)
         XCTAssertNil(viewModel.error)
-        XCTAssertEqual(viewModel.jokes.first, mockDataService.joke)
+        XCTAssertEqual(viewModel.jokes.first?.joke, mockDataService.joke)
         XCTAssertEqual(viewModel.error?.localizedDescription, mockDataService.error?.localizedDescription)
     }
     
@@ -36,7 +36,7 @@ class JokesListViewModelSpec: XCTestCase {
 
         XCTAssertNotNil(viewModel.error)
         XCTAssertTrue(viewModel.jokes.isEmpty)
-        XCTAssertEqual(viewModel.jokes.first, mockDataService.joke)
+        XCTAssertEqual(viewModel.jokes.first?.joke, mockDataService.joke)
         XCTAssertEqual(viewModel.error?.localizedDescription, mockDataService.error?.localizedDescription)
     }
 }

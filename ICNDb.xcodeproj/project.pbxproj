@@ -24,7 +24,7 @@
 		378E087726FA8E0D00E9F38E /* AppButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378E087626FA8E0D00E9F38E /* AppButtonStyle.swift */; };
 		378E087926FA917500E9F38E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378E087826FA917500E9F38E /* HomeViewModel.swift */; };
 		378E087D26FA928700E9F38E /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378E087C26FA928700E9F38E /* AlertItem.swift */; };
-		378E087F26FA959300E9F38E /* Joke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378E087E26FA959300E9F38E /* Joke.swift */; };
+		378E087F26FA959300E9F38E /* JokeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378E087E26FA959300E9F38E /* JokeDto.swift */; };
 		378E088126FAA1E400E9F38E /* JokesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378E088026FAA1E400E9F38E /* JokesListView.swift */; };
 		378E088326FAA8D300E9F38E /* JokesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378E088226FAA8D300E9F38E /* JokesListViewModel.swift */; };
 		378E088626FAAC8700E9F38E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378E088526FAAC8700E9F38E /* Colors.swift */; };
@@ -115,7 +115,7 @@
 		378E087626FA8E0D00E9F38E /* AppButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButtonStyle.swift; sourceTree = "<group>"; };
 		378E087826FA917500E9F38E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		378E087C26FA928700E9F38E /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
-		378E087E26FA959300E9F38E /* Joke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joke.swift; sourceTree = "<group>"; };
+		378E087E26FA959300E9F38E /* JokeDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeDto.swift; sourceTree = "<group>"; };
 		378E088026FAA1E400E9F38E /* JokesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesListView.swift; sourceTree = "<group>"; };
 		378E088226FAA8D300E9F38E /* JokesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesListViewModel.swift; sourceTree = "<group>"; };
 		378E088526FAAC8700E9F38E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 				378207B726FA4A52007EFC84 /* APIKit.h */,
 				378207B826FA4A52007EFC84 /* Info.plist */,
 				378207D326FA4A79007EFC84 /* APIService.swift */,
-				378E087E26FA959300E9F38E /* Joke.swift */,
+				378E087E26FA959300E9F38E /* JokeDto.swift */,
 			);
 			path = APIKit;
 			sourceTree = "<group>";
@@ -536,7 +536,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				378E087F26FA959300E9F38E /* Joke.swift in Sources */,
+				378E087F26FA959300E9F38E /* JokeDto.swift in Sources */,
 				378207D426FA4A79007EFC84 /* APIService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,7 +704,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ICNDb/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JU94JLHKNT;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ICNDb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -712,7 +712,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.your-team.ICNDb";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zb1995.ICNDb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -727,7 +727,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ICNDb/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JU94JLHKNT;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ICNDb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -735,7 +735,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.your-team.ICNDb";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zb1995.ICNDb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -748,7 +748,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JU94JLHKNT;
 				INFOPLIST_FILE = ICNDbTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -756,7 +756,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.your-team.ICNDbTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zb1995.ICNDbTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -770,7 +770,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JU94JLHKNT;
 				INFOPLIST_FILE = ICNDbTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -778,7 +778,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.your-team.ICNDbTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zb1995.ICNDbTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -791,14 +791,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JU94JLHKNT;
 				INFOPLIST_FILE = ICNDbUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.your-team.ICNDbUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zb1995.ICNDbUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -811,14 +811,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JU94JLHKNT;
 				INFOPLIST_FILE = ICNDbUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.your-team.ICNDbUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zb1995.ICNDbUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -834,7 +834,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JU94JLHKNT;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -846,7 +846,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.your-team.APIKit";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zb1995.APIKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -865,7 +865,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JU94JLHKNT;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -877,7 +877,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.your-team.APIKit";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zb1995.APIKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -892,7 +892,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JU94JLHKNT;
 				INFOPLIST_FILE = APIKitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -900,7 +900,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.your-team.APIKitTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zb1995.APIKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -913,7 +913,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JU94JLHKNT;
 				INFOPLIST_FILE = APIKitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -921,7 +921,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.your-team.APIKitTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zb1995.APIKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
