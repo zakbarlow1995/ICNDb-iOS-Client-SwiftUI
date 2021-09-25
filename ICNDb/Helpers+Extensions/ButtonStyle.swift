@@ -15,7 +15,7 @@ struct ButtonStyle: ViewModifier {
             .padding([.leading, .trailing], 10)
             .padding([.top, .bottom], 5)
             .frame(maxWidth: .infinity)
-            .background(Colors.appBlue)
+            .background(LinearGradient(colors: [Colors.appBlue, Colors.appLightBlue], startPoint: .leading, endPoint: .trailing))//(Colors.appBlue)
             .cornerRadius(10)
     }
 }
